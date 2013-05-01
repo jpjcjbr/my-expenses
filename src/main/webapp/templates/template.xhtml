@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:a4j="http://richfaces.org/a4j">
+
+<h:head>
+	<title><ui:insert name="title">My Expenses</ui:insert></title>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<h:outputStylesheet library="css" name="bootstrap.css" />
+	<h:outputStylesheet library="css" name="style.css" />
+</h:head>
+
+<h:body>
+	<div class="navbar navbar-fixed-top">
+		<div class="navbar-inner">
+			<div class="container-fluid">
+				<a class="btn btn-navbar" data-target=".nav-collapse"
+					data-toggle="collapse"> <span class="icon-bar"></span> <span
+					class="icon-bar"></span> <span class="icon-bar"></span>
+				</a> <a class="brand" href="#">My Expenses</a>
+				<div class="container-fluid nav-collapse">
+					<ul class="nav">
+						<li><h:link value="Add an Expense" outcome="/faces/pages/expenses/form.xhtml"/></li>
+						<li><h:link value="List my Expenses" outcome="/faces/pages/expenses/list.xhtml"/></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="container-fluid">
+		<div class="row-fluid">
+			<div class="span12">
+				<ui:fragment rendered="#{flash.success != null}">
+					<p class="alert alert-success">#{flash.success}</p>
+				</ui:fragment>
+				
+				<ui:insert name="header"/>
+				
+				<div class="validation-errors">
+					<h:messages />
+				</div>
+				
+				<ui:insert name="body">Default content</ui:insert>
+			</div>
+		</div>
+		<footer>
+			<p>© My Expenses</p>
+		</footer>
+	</div>
+</h:body>
+</html>

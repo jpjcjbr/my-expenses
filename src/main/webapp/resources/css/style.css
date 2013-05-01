@@ -1,0 +1,12 @@
+body { 
+	padding-top: 60px;
+}
+
+.btn {
+	margin-right: 10px;
+}
+
+.validation-errors {
+	color: #F00;
+	margin-bottom: 40px;
+}

@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich">
+<body>
+	<ui:composition template="/templates/template.xhtml">
+		<ui:define name="title">Add an Expense</ui:define>
+		<ui:define name="header">
+			<div class="page-header">
+				<h1>Add an Expense</h1>
+			</div>
+		</ui:define>
+		<ui:define name="body">
+			<h:form styleClass="form-horizontal">
+				<div class="control-group">
+					<h:outputLabel value="Description" for="description" styleClass="control-label"/>
+					<div class="controls">
+						<h:inputText id="description" value="#{expensesBean.expense.description}" required="true"
+							requiredMessage="Description #{i18n['cant.be.empty']}"/>
+					</div>
+				</div>
+				
+				<div class="control-group">
+					<h:outputLabel value="Date" for="date" styleClass="control-label"/>
+					<div class="controls">
+						<rich:calendar id="date" value="#{expensesBean.expense.date}" datePattern="dd/MM/yyyy" required="true"
+							requiredMessage="Date #{i18n['must.be.selected']}"/>
+					</div>
+				</div>
+				
+				<div class="control-group">
+					<h:outputLabel value="Value" for="value" styleClass="control-label"/>
+					<div class="controls">
+						<h:inputText id="value" value="#{expensesBean.expense.value}" required="true"
+							requiredMessage="Value #{i18n['cant.be.empty']}">
+							<f:convertNumber maxFractionDigits="2"
+								groupingUsed="true"
+								currencySymbol=""
+								type="currency"/>
+						</h:inputText>
+					</div>
+				</div>
+				
+				<div class="form-actions">
+					<h:commandButton value="Add Expense" action="#{expensesBean.add}" styleClass="btn btn-primary"/>
+					<h:commandButton value="Cancel" type="reset" styleClass="btn"/>
+				</div>
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</body>
+</html>
